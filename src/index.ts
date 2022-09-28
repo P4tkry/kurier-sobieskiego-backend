@@ -1,10 +1,12 @@
+import files from "./files";
+
 require('express-async-errors');
 import express, {NextFunction, Response, Request} from 'express';
 import * as bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import articles from "./articles";
 import users from "./users";
-
+import cors from 'cors';
 
 require('dotenv').config();
 
@@ -14,11 +16,16 @@ mongoose.connect(`mongodb+srv://dbUser:${process.env.DBPASSWORD}@cluster0.flcfke
     console.log('mongodb initialized successfully');
 });
 
+app.use(cors({
+    origin: '*'
+}));
 app.use(bodyParser.json());
 
 app.use('/articles', articles);
 
 app.use('/users', users);
+app.use('/files', files);
+
 
 app.use((err: any, req: Request, res: Response, next: NextFunction)=> {
     try{

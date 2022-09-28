@@ -28,6 +28,7 @@ coverage
 build/Release
 
 # Dependency directories
+dist
 .env
 .idea
 node_modules

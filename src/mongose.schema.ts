@@ -6,6 +6,7 @@ const articlesSchema = new Schema({
     author: String,
     content: String,
     thumbnail: String,
+    description: String,
     tags: [String]
 });
 

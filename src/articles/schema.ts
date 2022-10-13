@@ -7,7 +7,8 @@ export const getArticlesSchema={
     query: Joi.object({
         page: Joi.number().positive().required(),
         count: Joi.number().positive().required(),
-        sortByDate: Joi.number().allow(-1,1).required()
+        sortByDate: Joi.number().allow(-1,1).required(),
+        hasTag: Joi.string().optional()
     })
 }
 
@@ -15,6 +16,7 @@ export const postArticlesSchema={
     body: Joi.object({
         title: Joi.string().required(),
         content: Joi.string().required(),
+        description: Joi.string().required(),
         author: Joi.string().required(),
         tags: Joi.array().items(Joi.string()).required(),
         thumbnail: Joi.string().uri().required(),
@@ -34,6 +36,7 @@ export const patchArticleById={
     body: Joi.object({
         title: Joi.string().required(),
         content: Joi.string().required(),
+        description: Joi.string().required(),
         author: Joi.string().required(),
         tags: Joi.array().items(Joi.string()).required(),
         thumbnail: Joi.string().uri().required(),

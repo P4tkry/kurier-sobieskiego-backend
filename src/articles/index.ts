@@ -19,14 +19,9 @@ router.get('/', validate(getArticlesSchema), async(req, res)=>{
 })
 
 router.post('/', accessGuard, validate(postArticlesSchema), async (req, res)=>{
-    const article = new Articles({
-        title: req.body.title,
-        content: req.body.content,
-        tags: req.body.tags,
-        description: req.body.description,
-        author: req.body.author,
-        thumbnail: req.body.thumbnail
-    });
+
+
+    const article = new Articles(req.body);
     await article.save();
     return res.json({message: 'Article created successfully'});
 

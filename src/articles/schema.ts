@@ -16,7 +16,7 @@ export const postArticlesSchema={
     body: Joi.object({
         title: Joi.string().required(),
         content: Joi.string().required(),
-        description: Joi.string().required(),
+        description: Joi.string().optional(),
         author: Joi.string().required(),
         tags: Joi.array().items(Joi.string()).required(),
         thumbnail: Joi.string().uri().required(),

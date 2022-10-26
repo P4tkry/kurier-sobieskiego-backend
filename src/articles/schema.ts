@@ -16,7 +16,7 @@ export const postArticlesSchema={
     body: Joi.object({
         title: Joi.string().required(),
         content: Joi.string().required(),
-        description: Joi.string().optional(),
+        description: Joi.string().optional().allow(''),
         author: Joi.string().required(),
         tags: Joi.array().items(Joi.string()).required(),
         thumbnail: Joi.string().uri().required(),
@@ -36,7 +36,7 @@ export const patchArticleById={
     body: Joi.object({
         title: Joi.string().required(),
         content: Joi.string().required(),
-        description: Joi.string().required(),
+        description: Joi.string().optional().allow(''),
         author: Joi.string().required(),
         tags: Joi.array().items(Joi.string()).required(),
         thumbnail: Joi.string().uri().required(),

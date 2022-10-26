@@ -14,13 +14,11 @@ router.get('/', validate(getArticlesSchema), async(req, res)=>{
         query={tags: req.query.hasTag}
     }
     const articles = await Articles.find(query).sort({_id: Number(req.query.sortByDate) as 1 |-1}).skip((Number(req.query.page)-1)*Number(req.query.count)).limit(Number(req.query.count));
-    const count = Math.ceil(await Articles.count()/Number(req.query.count))
+    const count = Math.ceil(await Articles.find(query).count()/Number(req.query.count))
     return res.json({content: articles, numberOfPages: count});
 })
 
 router.post('/', accessGuard, validate(postArticlesSchema), async (req, res)=>{
-
-
     const article = new Articles(req.body);
     await article.save();
     return res.json({message: 'Article created successfully'});

@@ -44,7 +44,7 @@ router.patch('/:id', validate(patchArticleById), async (req, res)=>{
     const article = await Articles.findByIdAndUpdate(req.params.id, req.body).exec();
     if(!article)
         return res.status(404).send({ message: 'Article not found'});
-    return res.json({message: 'Article removed successfully'});
+    return res.json({message: 'Article updated successfully'});
 
 })
 

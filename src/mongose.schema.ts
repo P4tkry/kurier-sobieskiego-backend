@@ -12,7 +12,7 @@ const articlesSchema = new Schema({
 
 const usersSchema = new Schema({
     username: String,
-    password: String,
+    password: {type: String, required: false},
 });
 
 export const Articles = mongoose.model('Articles',articlesSchema);

@@ -7,6 +7,7 @@ const articlesSchema = new Schema({
     content: String,
     thumbnail: String,
     description: String,
+    draft: {type: Boolean, default: true},
     tags: [String]
 });
 

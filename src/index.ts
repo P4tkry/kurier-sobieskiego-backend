@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 import articles from "./articles";
 import users from "./users";
 import cors from 'cors';
+import {Articles} from "./mongose.schema";
 
 require('dotenv').config();
 

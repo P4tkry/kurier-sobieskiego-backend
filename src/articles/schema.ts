@@ -1,18 +1,19 @@
-import { Joi } from 'express-validation';
+import {Joi} from 'express-validation';
+
 const ObjectJoi = require('joi-objectid')(Joi);
 
 const JoiExt = {...Joi, objectId: ObjectJoi}
 
-export const getArticlesSchema={
+export const getArticlesSchema = {
     query: Joi.object({
         page: Joi.number().positive().required(),
         count: Joi.number().positive().required(),
-        sortByDate: Joi.number().allow(-1,1).required(),
+        sortByDate: Joi.number().allow(-1, 1).required(),
         hasTag: Joi.string().optional()
     })
 }
 
-export const postArticlesSchema={
+export const postArticlesSchema = {
     body: Joi.object({
         title: Joi.string().required(),
         content: Joi.string().required(),
@@ -20,16 +21,17 @@ export const postArticlesSchema={
         author: Joi.string().required(),
         tags: Joi.array().items(Joi.string()).required(),
         thumbnail: Joi.string().uri().required(),
+        draft: Joi.boolean().required()
     })
 }
 
-export const getArticleById={
+export const getArticleById = {
     params: Joi.object({
         id: JoiExt.objectId().required(),
     })
 }
 
-export const patchArticleById={
+export const patchArticleById = {
     params: Joi.object({
         id: JoiExt.objectId().required(),
     }),
@@ -40,6 +42,7 @@ export const patchArticleById={
         author: Joi.string().required(),
         tags: Joi.array().items(Joi.string()).required(),
         thumbnail: Joi.string().uri().required(),
+        draft: Joi.boolean().required()
     })
 }
 
